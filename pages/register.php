@@ -1,9 +1,4 @@
-<?php 
-    include '../includes/header.inc.php';
-    include '../includes/navbar.inc.php';
 
-
-?>
 
 
 
@@ -29,8 +24,3 @@
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
      
-
-<?php 
-        include '../includes/footer.inc.php';
-
-?>
