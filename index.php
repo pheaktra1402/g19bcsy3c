@@ -1,19 +1,20 @@
 <?php
+include './init/db.init.php';
 include './includes/header.inc.php';
 include './includes/navbar.inc.php';
 
 
-$available_page = ['login', 'register'];//array
+$available_pages = ['login', 'register'];//array
 
 if (isset($_GET['page'])) {
   $page = $_GET['page'];
-  if (in_array($page, $available_page)) {
+  if (in_array($page, $available_pages)) {
     include './pages/' . $page . '.php';
   } else {
-    echo '<h1>404 page not found</h1>';
+   include'./pages/dashboard.php';
   }
 } else {
-  echo '<h1>404 page not found</h1>';
+  include'./pages/error404.php';
 }
 include './includes/footer.inc.php';
 
