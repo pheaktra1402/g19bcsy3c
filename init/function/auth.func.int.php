@@ -9,6 +9,7 @@ function usernameExists($username)
     $query->bind_param('s', $username);//type here is datatype in phpmyadmin//bine value
     $query-> execute();
     $result = $query->get_result();
+
     if ($result->num_rows) {
         return true;
     }
@@ -27,4 +28,15 @@ function registerUser($name, $username, $passwd){
     }
     return false;
 }
-?>
+
+function logUserIn($username, $passwd){
+    global $db;
+    $query = $db->prepare('SELECT* FROM tbl_users WHERE username = ? AND passwd = ?');
+    $query->bind_param('ss', $username, $passwd);
+    $query->execute();
+    $result = $query->get_result();
+    if ($result->num_rows) {
+        return $result-> fetch_object();
+    }
+    return false;
+}
