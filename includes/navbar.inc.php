@@ -1,9 +1,14 @@
- 
- 
- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<?php
+//print_r($user);
+//var_dump($user);yk variable mk show
+
+?>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -19,8 +24,12 @@
             Auth
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/npicy3php/?page=login">Login</a></li>
-            <li><a class="dropdown-item" href="/npicy3php/?page=register">Register</a></li>
+            <?php if (empty($user)) { ?>
+              <li><a class="dropdown-item" href="/npicy3php/?page=login">Login</a></li>
+              <li><a class="dropdown-item" href="/npicy3php/?page=register">Register</a></li>
+            <?php } else { ?>
+              <li><a class="dropdown-item" href="/npicy3php/?page=register">Logout</a></li>
+            <?php } ?>
           </ul>
         </li>
         <li class="nav-item">
@@ -28,7 +37,7 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
