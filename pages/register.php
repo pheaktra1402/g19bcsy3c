@@ -7,7 +7,7 @@ if (isset($_POST['name'], $_POST['username'], $_POST['passwd'], $_POST['confirmP
   $passwd = trim($_POST['passwd']);
   $confirmPasswd = trim($_POST['confirmPasswd']);
   if (empty($name)) {
-    $nameErr = 'please input name! ';
+    $nameErr = 'please input name!';
   }
   if (empty($username)) {
     $usernameErr = 'please input username';
@@ -17,7 +17,7 @@ if (isset($_POST['name'], $_POST['username'], $_POST['passwd'], $_POST['confirmP
     $passwdErr = 'please input password';
 
   }
-  if (empty($confirmPasswd !== $passwd)) {
+  if ($confirmPasswd !== $passwd) {
     $confirmPasswd = 'please is not match';
   }
   if (usernameExists($username)) {
