@@ -3,16 +3,12 @@ require_once './init/init.php';
 $user = loggedInUser();
 include './includes/header.inc.php';
 include './includes/navbar.inc.php';
-
-// unset($_SESSION['$user_id']);
-
-
-$available_pages = ['login', 'register', 'dashboard', 'logout'];//array
-$logged_in_pages = ['dashboard'];
+$available_pages = ['login', 'register', 'logout', 'dashboard', 'profile'];
+$logged_in_pages = ['dashboard', 'profile'];
 $non_logged_in_pages = ['login', 'register'];
 $page = '';
 if (isset($_GET['page'])) {
-  $page = $_GET['page'];
+  $page = $_GET['page']; // logout
 }
 if (in_array($page, $logged_in_pages) && empty($user)) {
   header('Location: ./?page=login');
@@ -23,12 +19,7 @@ if (in_array($page, $non_logged_in_pages) && !empty($user)) {
 if (in_array($page, $available_pages)) {
   include './pages/' . $page . '.php';
 } else {
-  header('Location: ./?page=dashboard');
-  //header('Location: ./?page=Login');
+  // header('Location: ./?page=dashboard');
+  header('Location: ./?page=login');
 }
-
-
 include './includes/footer.inc.php';
-
-
-?>

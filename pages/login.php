@@ -14,7 +14,7 @@ if (isset($_POST['username'], $_POST['passwd'])) {
   if (empty($usernameErr) && empty($passwdErr)) {
     $user = logUserIn($username, $passwd);
     if ($user !== false) {
-      $_SESSION['user_id'] = $user->id;//acees by arrow key in database have id
+      $_SESSION['user_id'] = $user->id;
       header('Location: ./?page=dashboard.php');
     } else {
       echo '<div class="alert alert-success" role="alert">Login failed</div>';

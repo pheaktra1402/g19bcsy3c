@@ -2,4 +2,4 @@
 if (isset($_SESSION['user_id'])) {
     unset($_SESSION['user_id']);
 }
-header('Localtion: ./?page=login');
+header('Location: ./?page=login');
