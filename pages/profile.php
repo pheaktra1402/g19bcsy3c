@@ -30,28 +30,28 @@ if (isset($_POST['changePasswd'], $_POST['oldPasswd'], $_POST['newPasswd'], $_PO
 }
 
 
+
 if (isset($_POST['uploadPhoto']) && isset($_FILES['photo'])) {
     $photo = $_FILES['photo'];
-
     if (empty($photo['name'])) {
         echo '<div class="alert alert-danger" role="alert">
-                Please select a photo to upload.
-              </div>';
+            Please select a photo to upload.
+            </div>';
     } else {
         try {
             if (changeProfileImage($photo)) {
                 echo '<div class="alert alert-success" role="alert">
-                        Profile image changed successfully.
-                      </div>';
+                    profile image changed successfully.
+                    </div>';
             } else {
                 echo '<div class="alert alert-danger" role="alert">
-                        Failed to change profile image.
-                      </div>';
+                    failed to change profile image.
+                    </div>';
             }
         } catch (Exception $e) {
             echo '<div class="alert alert-danger" role="alert">
-                    ' . $e->getMessage() . '
-                  </div>';
+                ' . $e->getMessage() . '
+                </div>';
         }
     }
 }
@@ -60,32 +60,23 @@ if (isset($_POST['deletePhoto'])) {
     deleteProfileImage();
 }
 ?>
+
 <div class="row">
     <div class="col-6">
         <form method="post" action="./?page=profile" enctype="multipart/form-data">
-
             <div class="d-flex justify-content-center">
                 <input name="photo" type="file" id="profileUpload" hidden>
-
                 <label role="button" for="profileUpload">
-                    <img src="<?= $user->photo ?? './assets/images/emptyuser.png' ?>" class="rounded img-thumbnail"
-                        style="max-width:200px;">
+                    <img src="<?php echo loggedInUser()->photo ?? './assets/images/emptyuser.png' ?>"
+                        class="rounded img-thumbnail" style="max-width:200px">
                 </label>
             </div>
-
-            <div class="d-flex justify-content-center mt-2">
-                <button type="submit" name="deletePhoto" class="btn btn-danger">
-                    Delete
-                </button>
-
-                <button type="submit" name="uploadPhoto" class="btn btn-success ms-2">
-                    Upload
-                </button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" name="deletePhoto" class="btn btn-danger">Delete</button>
+                <button type="submit" name="uploadPhoto" class="btn btn-success">Upload</button>
             </div>
-
         </form>
     </div>
-
 
     <div class="col-6">
         <form method="post" action="./?page=profile" class="col-md-8 col-lg-6 mx-auto">
